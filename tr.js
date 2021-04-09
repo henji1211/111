@@ -1,18 +1,3 @@
-/*
-京东价格保护：脚本更新地址 https://raw.githubusercontent.com/ZCY01/daily_scripts/main/jd/jd_try.js
-脚本兼容: QuantumultX, Node.js
-
-⚠️ 非常耗时的脚本。最多可能执行半小时！
-每天最多关注300个商店，但用户商店关注上限为500个。
-请配合取关脚本试用，使用 jd_unsubscribe.js 提前取关至少250个商店确保京东试用脚本正常运行。
-==========================Quantumultx=========================
-[task_local]
-# 取关京东店铺商品，请在 boxjs 修改取消关注店铺数量
-5 10 * * * https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_unsubscribe.js, tag=取关京东店铺商品, enabled=true
-
-# 京东价格保护
-30 10 * * * https://raw.githubusercontent.com/ZCY01/daily_scripts/main/jd/jd_try.js, tag=京东试用, img-url=https://raw.githubusercontent.com/ZCY01/img/master/jdtryv1.png, enabled=true
- */
 const $ = new Env('京东试用')
 let cookiesArr = [],
 	cookie = '',
@@ -26,8 +11,8 @@ let allGoodList = []
 $.pageSize = 12
 let cidsList = ["家用电器", "手机数码", "电脑办公", "家居家装"]
 let typeList = ["普通试用", "闪电试用"]
-let goodFilters = "教程@软件@英语@辅导@培训靓美@脚气@文胸@卷尺@看房@鞋带@益生菌@丰胸@课程培训@体验班@精品课@红参@益生元@御夫王@苗霸@北海游@购房@键盘膜@情趣内衣@种子@三元催化@男用喷剂@玉石@万向轮@档案袋@癣@中年@玉坠@老太太@妇女@私处@孕妇@卫生巾@卫生条@课@培训@阴道@生殖器@肛门@狐臭@少女内衣@胸罩@洋娃娃@男孩玩具@女孩玩具@益智@少女@女性内衣@女性内裤@女内裤@女内衣@女孩@鱼饵@钓鱼@童装@吊带@黑丝@钢圈@婴儿@儿童@玩具@幼儿@娃娃@网课@网校@电商@手机壳@钢化膜@车载充电器@网络课程@疣@避孕套@女纯棉@按键贴@背膜@后膜@背贴@贝尔思力@卡薇尔@三角裤@痔疮@神皂@美少女@纸尿裤@英语@俄语@四级@六级@四六级@在线网络@在线@阴道炎@宫颈@螺丝@延时@糜烂@和田玉@白玉@打底裤@手机膜@早早孕@延时喷剂@鱼@增长增时@狗@".split('@')
-let minPrice = 70
+let goodFilters = "教程@软件@英语@辅导@培训".split('@')
+let minPrice = 0
 
 const cidsMap = {
 	"全部商品": "0",
@@ -352,7 +337,7 @@ async function tryGoodList() {
 		// 如果没有关注且关注失败
 		if (good.shopId && !await isFollowed(good) && !await followShop(good)) continue
 		// 两个申请间隔不能太短，放在下面有利于确保 follwShop 完成
-		await $.wait(7000)
+		await $.wait(5000)
 		// 关注完毕，即将试用
 		await doTry(good)
 	}
