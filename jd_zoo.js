@@ -576,7 +576,7 @@ function zoo_pk_assistGroup(inviteId = "",timeout = 0) {
     let key = minusByByte(nonstr.slice(0,5),String(time).slice(-5))
     let msg = `random=${rnd}&token=d89985df35e6a2227fd2e85fe78116d2&time=${time}&nonce_str=${nonstr}&key=${key}&is_trust=true`
     let sign = bytesToHex(wordsToBytes(getSign(msg))).toUpperCase()
-    const inviteId = "ZXTKT0225KkcRBZM8waFdUuhwfNfcAFjRWn6-7zx55awQ"
+    const inviteId = "ZXTKT0225KkcRBZM8waFdUuhwfNfcAFjRWn6-7zx55awQ@ZXTKT0187aUqHk9LqRGCJhz8lAFjRWn6-7zx55awQ@ZXTKT0225KkcRhoQ_AbQI0j2x6FbIgFjRWn6-7zx55awQ@ZXTKT0225KkcRB8R9ACGJE7wkKENcQFjRWn6-7zx55awQ@ZXTKT01597gpGU8c8FfWKB4FjRWn6-7zx55awQ@ZXTKT0225KkcR00RoFeGKBunk6NYcQFjRWn6-7zx55awQ"
     setTimeout( ()=>{
       let url = {
         url : `${JD_API_HOST}zoo_pk_assistGroup`  ,
